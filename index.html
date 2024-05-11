@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Sign Up Form</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffcccb; /* Color changed for Mother's Day */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      width: 350px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.38); /* Glass design */
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s;
+    }
+    .container:hover {
+      background-color: rgba(255, 255, 255, 0.38); /* Glass design on hover */
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 25px;
+      background-color: #007bff;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+      text-align: center;
+    }
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container" id="loginContainer">
+  <h2>Login</h2>
+  <form id="loginForm">
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <input type="submit" value="Login">
+    <div id="loginError" class="error"></div>
+  </form>
+  <div class="footer">
+    <p>Made by Jhames Martin</p>
+    <p>Don't have an account? <a href="#" id="showSignUp">Sign up</a></p>
+  </div>
+</div>
+
+<div class="container" id="signupContainer" style="display: none;">
+  <h2>Sign Up</h2>
+  <form id="signupForm">
+    <input type="text" id="newUsername" placeholder="New Username" required>
+    <input type="password" id="newPassword" placeholder="New Password" required>
+    <input type="submit" value="Sign Up">
+    <div id="signupError" class="error"></div>
+  </form>
+  <div class="footer">
+    <p>Made by Jhames Martin</p>
+    <p>Already have an account? <a href="#" id="showLogin">Login</a></p>
+  </div>
+</div>
+
+<script>
+  document.getElementById("showSignUp").addEventListener("click", function(event) {
+    event.preventDefault();
+    document.getElementById("loginContainer").style.display = "none";
+    document.getElementById("signupContainer").style.display = "block";
+  });
+
+  document.getElementById("showLogin").addEventListener("click", function(event) {
+    event.preventDefault();
+    document.getElementById("signupContainer").style.display = "none";
+    document.getElementById("loginContainer").style.display = "block";
+  });
+
+  document.getElementById("loginForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    var loginErrorDiv = document.getElementById("loginError");
+    if (username === "Ronelli" && password === "2326") {
+      window.location.href = "formymom.html";
+    } else {
+      loginErrorDiv.textContent = "Ikaw ba si Mama? ,Incorrect username or password. Please try again.";
+    }
+  });
+
+  document.getElementById("signupForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    var newUsername = document.getElementById("newUsername").value;
+    var newPassword = document.getElementById("newPassword").value;
+    var signupErrorDiv = document.getElementById("signupError");
+    // Display error message for sign-up attempt
+    signupErrorDiv.textContent = "Can't create an account, only Jhames can make an account";
+  });
+</script>
+
+</body>
+</html>
